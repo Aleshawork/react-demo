@@ -1,5 +1,7 @@
 package com.example.Reactdemo.person;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 
@@ -11,7 +13,7 @@ public class Person {
     private final Gender gender;
 
     enum Gender{
-        MALE,FEMAIL
+        MALE,FEMALE
     }
 
     public Person(UUID id, String name, String sername, int age, Gender gender) {
@@ -22,22 +24,27 @@ public class Person {
         this.gender = gender;
     }
 
+    @JsonProperty("peerson_id")
     public UUID getId() {
         return id;
     }
 
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
+    @JsonProperty("sername")
     public String getSername() {
         return sername;
     }
 
+    @JsonProperty("age")
     public int getAge() {
         return age;
     }
 
+    @JsonProperty("gender")
     public Gender getGender() {
         return gender;
     }

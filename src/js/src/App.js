@@ -3,19 +3,35 @@ import './App.css';
 import { getAllStudents} from './Client'
 import React, { Component } from 'react';
 import {
-  Table , Avatar, Spin
+  Table , Avatar, Spin, Modal
 } from 'antd';
 import Container from './Container'
+import Footer from './Footer'
 
 class App extends Component {
 
   state={
     students: [],
-    isFetching: false
+    isFetching: false,
+    addNewPerson:false
   }
 
   componentDidMount(){
     this.fetchStudents();
+  }
+
+
+  openAddStudent =() =>{
+    this.setState({
+      addNewPerson:true
+    });
+  }
+
+  closeAddStudent =() =>{
+
+    this.setState({
+      addNewPerson: false
+    })
   }
 
   fetchStudents =() =>{
@@ -35,7 +51,9 @@ class App extends Component {
 
   render() {
     
-    const { students, isFetching} =this.state;
+    const { students, isFetching, addNewPerson } =this.state;
+
+
 
     if(isFetching){
       return(
@@ -88,6 +106,17 @@ class App extends Component {
          columns={columns} 
          pagination={false}
          rowKey='id'></Table>
+
+         <Modal
+          title='Hello new person !'
+          visible={addNewPerson}
+          onOk={this.closeAddStudent}
+          onCancel={this.closeAddStudent}
+          width={1000}>
+         </Modal>
+
+         <Footer numberOfPerson={students.length} 
+         handleAddPersonClickEvent={this.openAddStudent}></Footer>
          </Container>);
     }
 
