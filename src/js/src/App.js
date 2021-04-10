@@ -7,6 +7,8 @@ import {
 } from 'antd';
 import Container from './Container'
 import Footer from './Footer'
+import AddPersonForm from './forms/AddPersonForm';
+
 
 class App extends Component {
 
@@ -113,6 +115,8 @@ class App extends Component {
           onOk={this.closeAddStudent}
           onCancel={this.closeAddStudent}
           width={1000}>
+            <h1>Hello people !</h1>
+            <AddPersonForm></AddPersonForm>
          </Modal>
 
          <Footer numberOfPerson={students.length} 
