@@ -6,10 +6,19 @@ import java.util.UUID;
 
 
 public class Person {
+    @JsonProperty("person_id")
     private final UUID id;
+
+    @JsonProperty("name")
     private final String name;
+
+    @JsonProperty("sername")
     private final String sername;
+
+    @JsonProperty("age")
     private final int age;
+
+    @JsonProperty("gender")
     private final Gender gender;
 
     enum Gender{
@@ -24,7 +33,7 @@ public class Person {
         this.gender = gender;
     }
 
-    @JsonProperty("peerson_id")
+    @JsonProperty("person_id")
     public UUID getId() {
         return id;
     }
@@ -45,7 +54,10 @@ public class Person {
     }
 
     @JsonProperty("gender")
-    public Gender getGender() {
-        return gender;
+    public Gender getGender(){return gender;}
+
+    @Override
+    public String toString() {
+        return id+"/"+name+"/"+sername +"/" +age+"/"+gender;
     }
 }

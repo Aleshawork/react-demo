@@ -36,4 +36,16 @@ public class PersonRepository {
         return personList;
     }
 
+    public void insertPerson(Person person, UUID id){
+
+        String sql= "insert into person (person_id, name, sername, age, gender) values(?, ?, ?, ?, ?)";
+        jdbcTemplate.update(
+                sql,
+                id,
+                person.getName(),
+                person.getSername(),
+                person.getAge(),
+                person.getGender().name().toUpperCase());
+    }
+
 }

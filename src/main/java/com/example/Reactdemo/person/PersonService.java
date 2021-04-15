@@ -20,5 +20,10 @@ public class PersonService {
         return personRepository.selectAllPerson();
     }
 
+    public void addNewPerson(Person person){
+        UUID id =UUID.randomUUID();
+        personRepository.insertPerson(person,id);
+    }
+
 
 }

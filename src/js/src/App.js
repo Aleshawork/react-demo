@@ -3,11 +3,12 @@ import './App.css';
 import { getAllStudents} from './Client'
 import React, { Component } from 'react';
 import {
-  Table , Avatar, Spin, Modal
+  Table , Avatar, Spin, Modal, Button
 } from 'antd';
 import Container from './Container'
 import Footer from './Footer'
 import AddPersonForm from './forms/AddPersonForm';
+import LayoutPerson from './LayoutPerson';
 
 
 class App extends Component {
@@ -116,12 +117,21 @@ class App extends Component {
           onCancel={this.closeAddStudent}
           width={1000}>
             <h1>Hello people !</h1>
-            <AddPersonForm></AddPersonForm>
+            <AddPersonForm
+             onSuccess={() => {
+                  this.closeAddStudent();
+                  this.fetchStudents();
+                }
+                  }>
+            </AddPersonForm>
          </Modal>
 
          <Footer numberOfPerson={students.length} 
          handleAddPersonClickEvent={this.openAddStudent}></Footer>
-         </Container>);
+
+         
+         </Container>
+         );
     }
 
 
